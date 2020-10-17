@@ -303,11 +303,11 @@ class Vst2Bridge {
     std::variant<std::monostate, Editor, EditorOpening> editor;
 
     /**
-     * Whether the host is currently calling `effSetChunk()` so we can filter
-     * out calls to `audioMasterAutomate()` to work around a regression in
-     * Bitwig Studio 3.3 beta 1.
+     * Whether calls to `audioMasterAutomate()` should temporarily be filtered
+     * to work around a regression in Bitwig Studio 3.3 beta 1. We'll do this
+     * during calls to `effSetChunk()` and `effSetProgram()`.
      *
      * HACK: See the comment in `Vst2Bridge::dispatch_wrapper`
      */
-    std::atomic_bool is_setting_chunk = false;
+    std::atomic_bool disable_audiomaster_automate = false;
 };
