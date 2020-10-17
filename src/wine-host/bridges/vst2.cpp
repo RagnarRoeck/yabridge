@@ -436,6 +436,17 @@ intptr_t Vst2Bridge::dispatch_wrapper(AEffect* plugin,
 
             return return_value;
         } break;
+        // HACK: Temporary workaround to ignore `audioMasterAutomate` while
+        //       restoring plugin state `effSetChunk` when restoring plugin
+        //       state. This is only needed for Bitwig Studio 3.3 beta 1.
+        case effSetChunk: {
+            is_setting_chunk = true;
+            const intptr_t return_value =
+                plugin->dispatcher(plugin, opcode, index, value, data, option);
+            is_setting_chunk = false;
+
+            return return_value;
+        } break;
         default:
             return plugin->dispatcher(plugin, opcode, index, value, data,
                                       option);
@@ -577,6 +588,12 @@ intptr_t Vst2Bridge::host_callback(AEffect* effect,
     //       >= 2`.
     if (config.hack_reaper_update_display &&
         opcode == audioMasterUpdateDisplay) {
+        return 0;
+    }
+
+    // HACK: We'll temporarily ignore these during `effSetChunk()` to work
+    //       around a regression in Bitwig Studio 3.3 beta 1
+    if (is_setting_chunk && opcode == audioMasterAutomate) {
         return 0;
     }
 

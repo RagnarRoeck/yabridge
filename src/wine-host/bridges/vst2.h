@@ -26,6 +26,7 @@
 #include <vestige/aeffectx.h>
 #include <windows.h>
 
+#include <atomic>
 #include <boost/asio/local/stream_protocol.hpp>
 #include <mutex>
 
@@ -300,4 +301,13 @@ class Vst2Bridge {
      * @see should_postpone_message_loop
      */
     std::variant<std::monostate, Editor, EditorOpening> editor;
+
+    /**
+     * Whether the host is currently calling `effSetChunk()` so we can filter
+     * out calls to `audioMasterAutomate()` to work around a regression in
+     * Bitwig Studio 3.3 beta 1.
+     *
+     * HACK: See the comment in `Vst2Bridge::dispatch_wrapper`
+     */
+    std::atomic_bool is_setting_chunk = false;
 };
