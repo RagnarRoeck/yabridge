@@ -21,7 +21,7 @@
 #include <boost/process/environment.hpp>
 #include <regex>
 
-#include "../../common/communication.h"
+#include "../../common/sockets.h"
 
 // FIXME: `std::filesystem` is broken in wineg++, at least under Wine 5.8. Any
 //        path operation will thrown an encoding related error

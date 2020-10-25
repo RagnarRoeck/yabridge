@@ -21,7 +21,7 @@
 #include <boost/process/io.hpp>
 #include <boost/process/start_dir.hpp>
 
-#include "../common/communication.h"
+#include "../common/sockets.h"
 
 namespace bp = boost::process;
 namespace fs = boost::filesystem;

@@ -100,8 +100,8 @@ as the _Windows VST plugin_. The whole process works as follows:
    be sent over a socket. The objects used for encoding both the requests and
    the responses for theses events can be found in `src/common/serialization.h`,
    and the functions that actually read and write these objects over the sockets
-   are located in `src/common/communication.h`. The actual binary serialization
-   is handled using [bitsery](https://github.com/fraillt/bitsery).
+   are located in `src/common/sockets.h`. The actual binary serialization is
+   handled using [bitsery](https://github.com/fraillt/bitsery).
 
    Actually sending and receiving the events happens in the `send_event()` and
    `receive_event()` functions. When calling either `dispatch()` or

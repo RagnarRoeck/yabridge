@@ -20,8 +20,8 @@
 #include <src/common/config/config.h>
 #include <src/common/config/version.h>
 
-#include "../common/communication.h"
 #include "../common/events.h"
+#include "../common/sockets.h"
 #include "../common/utils.h"
 #include "utils.h"
 

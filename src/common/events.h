@@ -18,8 +18,8 @@
 
 #include <mutex>
 
-#include "communication.h"
 #include "logging.h"
+#include "sockets.h"
 
 /**
  * Encodes the base behavior for reading from and writing to the `data` argument
