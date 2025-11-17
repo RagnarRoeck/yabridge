@@ -866,7 +866,7 @@ After you've finished building you can follow the instructions under the
 
 ### 32-bit bitbridge
 
-**The bitbridge functionality is not compatible and likely will never be compatible with Wine's new WoW64 build mode ([Wine #58377](https://bugs.winehq.org/show_bug.cgi?id=58377)).**
+**The bitbridge functionality is not compatible and likely will never be compatible with Wine's new WoW64 build mode ([Wine #58377](https://bugs.winehq.org/show_bug.cgi?id=58377)).** If your Wine distribution does not come with a `wine64` binary, then yabridge's bitbridge will likely not work.
 
 It is also possible to compile a host application for yabridge that's compatible
 with 32-bit plugins such as old SynthEdit plugins. This will allow yabridge to
