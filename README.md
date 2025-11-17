@@ -19,6 +19,7 @@ while also staying easy to debug and maintain.
 - [**Usage**](#usage)
   - [Bitbridge](#bitbridge)
   - [Wine prefixes](#wine-prefixes)
+  - [Using different Wine versions](#using-different-wine-versions)
   - [Drag-and-drop](#drag-and-drop)
   - [Input focus grabbing](#input-focus-grabbing)
   - [Downgrading Wine](#downgrading-wine)
@@ -169,6 +170,17 @@ time. Yabridge will automatically detect and use the Wine prefix the Windows
 plugin's `.dll`, `.vst3`, or `.clap` file is located in. Alternatively, you can
 set the `WINEPREFIX` environment variable to override the Wine prefix for _all
 yabridge plugins_.
+
+### Using different Wine versions
+
+If the `WINELOADER` environment variable is set, then yabridge will use that
+binary to run Wine. Otherwise it will use whatever `wine` binary is available on
+the search path instead.
+
+See
+[`yabridge-bottles-wineloader`](https://github.com/microfortnight/yabridge-bottles-wineloader)
+for a community project to integrate yabridge with
+[Bottles](https://usebottles.com/).
 
 ### Drag-and-drop
 
